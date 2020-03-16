@@ -1,0 +1,29 @@
+{% extends 'Organised_chart/Base.html' %}
+
+{% block content %}
+
+    <h3>List of active Employees of a company</h3>
+    <p>Retrieve from API :- "https://api.zenefits.com/core/people" </p>
+    <p>{{ linebreaksbr }}</p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">emp_id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Employer Manager</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in r1 %}:
+                <tr>
+                    <th scope="row"><strong><a href="{% url 'emp_detail' id=r.id %}">{{ r.id }}</a></strong></th>
+                    <td>{{ r.first_name }}</td>
+                    <td>{{ r.last_name }}</td>
+                    <td>{{ r.manager }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
